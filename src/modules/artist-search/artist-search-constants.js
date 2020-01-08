@@ -1,0 +1,4 @@
+// @flow
+
+export const ARTIST_SEARCH_ACTION_NAMESPACE = '@@ARTIST_SEARCH';
+export const ARTIST_SEARCH_STORE_KEY = 'ARTIST_SEARCH';

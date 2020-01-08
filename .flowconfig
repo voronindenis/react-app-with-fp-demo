@@ -1,0 +1,36 @@
+[ignore]
+.*/public/.*
+.*/node_modules/.*
+
+[include]
+
+[libs]
+./flow/
+./flow-typed/npm/
+
+[lints]
+
+[options]
+esproposal.decorators=ignore
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=src
+module.system.node.resolve_dirname=flow
+
+module.name_mapper='.*\(.sass\)' -> 'empty/object'
+module.name_mapper='.*\(.css\)' -> 'empty/object'
+module.name_mapper='^.*\.png$' -> 'empty/object'
+module.name_mapper='^.*\.jpe?g$' -> 'empty/object'
+module.name_mapper='^.*\.svg$' -> 'empty/object'
+
+module.name_mapper='^@\/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+module.name_mapper='^@' -> '<PROJECT_ROOT>/src'
+
+module.system=haste
+
+module.file_ext=.js
+module.file_ext=.json
+module.file_ext=.jsx
+module.file_ext=.css
+module.file_ext=.sass
+
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
