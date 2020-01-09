@@ -1,0 +1,9 @@
+// @flow
+
+export const ARTIST_CONTENT_SEARCH_ACTION_NAMESPACE = '@@ARTIST_CONTENT_SEARCH';
+export const ARTIST_CONTENT_SEARCH_STORE_KEY = 'ARTIST_CONTENT_SEARCH';
+
+export const DIRECTIONS_ENUM = {
+  PREV: 'prev',
+  NEXT: 'next',
+};
