@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { getArtistContentSelectorUtil } from 'modules/artist-content-search';
-import { mapFullInformation, mapSongsTitles, mapSongs } from './artist-content-utils';
+import { mapFullInformation, mapSongs } from './artist-content-utils';
 import { CONTROL_RADIO_GROUP_CONFIG } from './artist-content-constants';
 import { ArtistContent } from './artist-content';
 
@@ -21,11 +21,9 @@ const ArtistContentControllerComponent = React.memo<TProps>((props: TProps) => {
   };
 
   const createContentCardsList = () => {
-    switch(radioValue) {
+    switch (radioValue) {
       case CONTROL_RADIO_GROUP_CONFIG.FULL_INFORMATION_RADIO.VALUE:
         return props.artistContentSelectorUtil(mapFullInformation);
-      case CONTROL_RADIO_GROUP_CONFIG.ONLY_SONGS_TITLES_RADIO.VALUE:
-        return props.artistContentSelectorUtil(mapSongsTitles);
       case CONTROL_RADIO_GROUP_CONFIG.ONLY_SONGS_RADIO.VALUE:
         return props.artistContentSelectorUtil(mapSongs);
       default:

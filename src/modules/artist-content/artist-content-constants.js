@@ -6,10 +6,6 @@ export const CONTROL_RADIO_GROUP_CONFIG = {
     LABEL: 'Show full information',
     VALUE: 'full',
   },
-  ONLY_SONGS_TITLES_RADIO: {
-    LABEL: 'Show only songs titles',
-    VALUE: 'songs titles',
-  },
   ONLY_SONGS_RADIO: {
     LABEL: 'Show only songs',
     VALUE: 'songs',

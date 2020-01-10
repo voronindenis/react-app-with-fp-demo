@@ -17,6 +17,4 @@ export const mapFullInformation: TArtistContentMapFunction = maybe(undefined, fp
   })
 ));
 
-export const mapSongsTitles: TArtistContentMapFunction = maybe(undefined, fpMap(fpPick(['id', 'title'])));
-
-export const mapSongs: TArtistContentMapFunction = maybe(undefined, fpMap(fpPick(['id', 'preview'])));
+export const mapSongs: TArtistContentMapFunction = maybe(undefined, fpMap(fpPick(['id', 'title', 'preview'])));

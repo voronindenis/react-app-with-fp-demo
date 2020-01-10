@@ -10,7 +10,7 @@ type TProps = {
 
 export const ArtistContentControlRadioGroup = React.memo<TProps>((props: TProps) => (
   <Grid>
-    <Grid.Row columns="equal">
+    <Grid.Row centered columns={3}>
       <Grid.Column textAlign="center">
         <Radio
           checked={props.radioValue === CONTROL_RADIO_GROUP_CONFIG.FULL_INFORMATION_RADIO.VALUE}
@@ -18,15 +18,6 @@ export const ArtistContentControlRadioGroup = React.memo<TProps>((props: TProps)
           name={CONTROL_RADIO_GROUP_CONFIG.NAME}
           onChange={props.onRadioChange}
           value={CONTROL_RADIO_GROUP_CONFIG.FULL_INFORMATION_RADIO.VALUE}
-        />
-      </Grid.Column>
-      <Grid.Column textAlign="center">
-        <Radio
-          checked={props.radioValue === CONTROL_RADIO_GROUP_CONFIG.ONLY_SONGS_TITLES_RADIO.VALUE}
-          label={CONTROL_RADIO_GROUP_CONFIG.ONLY_SONGS_TITLES_RADIO.LABEL}
-          name={CONTROL_RADIO_GROUP_CONFIG.NAME}
-          onChange={props.onRadioChange}
-          value={CONTROL_RADIO_GROUP_CONFIG.ONLY_SONGS_TITLES_RADIO.VALUE}
         />
       </Grid.Column>
       <Grid.Column textAlign="center">

@@ -1,7 +1,9 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { compose, fpGet } from 'lib/fp/index';
+import { Button } from 'semantic-ui-react';
+import { compose, fpGet, memoize } from 'lib/fp';
+import { useModal } from 'hooks/useModal';
 import { searchArtistContent } from '../../artist-content-search-actions';
 import { SearchString } from './search-string';
 
@@ -13,14 +15,35 @@ type TProps = {} & TConnectedProps;
 
 const SearchStringControllerComponent = React.memo<TProps>((props: TProps) => {
   const [query, setQuery] = React.useState('');
+  const [Modal, showModal] = useModal();
+
+  const createActions = memoize((closeModalFunc?: () => void) => (
+    <Button
+      color="green"
+      icon="checkmark"
+      onClick={closeModalFunc}
+      inverted
+      content="Got it"
+    />
+  ));
 
   const searchButtonClickHandle = () => {
-    props.searchArtistContent(query);
+    props.searchArtistContent(query)
+      .catch(compose(showModal, fpGet('message')));
   };
 
   const searchInputChangeHandle = compose(setQuery, fpGet('target.value'));
 
-  return <SearchString onSearchButtonClick={searchButtonClickHandle} onSearchInputChange={searchInputChangeHandle} />;
+  return (
+    <>
+      <Modal
+        createActions={createActions}
+        headerConfig={{ content: 'Error!' }}
+        modalConfig={{ basic: true, size: 'small' }}
+      />
+      <SearchString onSearchButtonClick={searchButtonClickHandle} onSearchInputChange={searchInputChangeHandle} />
+    </>
+  );
 });
 
 const mapDispatchToProps = {

@@ -19,7 +19,7 @@ export const ContentCard = React.memo<TProps>((props: TProps) => (
       }
       {
         props.artist && props.album && (
-          <React.Fragment>
+          <>
             <Image
               circular
               floated="right"
@@ -34,7 +34,7 @@ export const ContentCard = React.memo<TProps>((props: TProps) => (
             />
             <Card.Meta>{props.artist.name}</Card.Meta>
             <Card.Description>{props.album.title}</Card.Description>
-          </React.Fragment>
+          </>
         )
       }
     </Card.Content>

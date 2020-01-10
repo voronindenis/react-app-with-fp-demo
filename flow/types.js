@@ -2,8 +2,9 @@
 
 // DTO types
 declare type TDeezerSearchResponseDTO = {
-  data: Array<TArtistContentItemDTO>,
-  total: number,
+  data?: Array<TArtistContentItemDTO>,
+  error?: {type: string, message: string, code: number },
+  total?: number,
   prev?: string,
   next?: string,
 };
@@ -80,7 +81,7 @@ declare type TArtistSearchState = {
 };
 
 declare type TApplicationState = {
-  'ARTIST_SEARCH': TArtistSearchState,
+  'ARTIST_CONTENT_SEARCH': TArtistSearchState,
 };
 
 declare type TArtistContentSelectorUtilResult = (mapper: TArtistContentMapFunction) => Array<TContentCard> | void;

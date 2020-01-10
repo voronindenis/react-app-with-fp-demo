@@ -11,12 +11,12 @@ type TProps = {
 };
 
 export const ArtistContent = React.memo<TProps>((props: TProps) => (
-  <React.Fragment>
+  <>
     <ArtistContentControlRadioGroup
       onRadioChange={props.onRadioChange}
       radioValue={props.radioValue}
     />
     <Divider hidden />
     <ArtistContentsCardsList contentCardsList={props.contentCardsList} />
-  </React.Fragment>
+  </>
 ));

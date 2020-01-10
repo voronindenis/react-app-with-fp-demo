@@ -4,9 +4,9 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import {
   compose, fpGet, fpGetOr, trace,
 } from 'lib/fp';
-import { createNamespace } from 'lib/utils';
+import { createNamespace, logAndThrowError } from 'lib/utils';
 import { ARTIST_CONTENT_SEARCH_ACTION_NAMESPACE, DIRECTIONS_ENUM } from './artist-content-search-constants';
-import { setNavURL } from './artist-content-search-utils';
+import { checkSearchError, setNavURL } from './artist-content-search-utils';
 import { getPrevArtistContentUrl, getNextArtistContentUrl } from './artist-content-search-selectors';
 
 const useNamespace = createNamespace(ARTIST_CONTENT_SEARCH_ACTION_NAMESPACE);
@@ -47,13 +47,13 @@ export const searchArtistContent = (query: string): ThunkAction => (dispatch: Th
       q: query,
     },
   })
-    .then(trace('Результат поиска артиста:'))
     .then(compose(
+      compose(dispatch, setArtistContentActionCreator, fpGetOr([], 'data')),
       setNavURL(DIRECTIONS_ENUM.NEXT, compose(dispatch, setArtistNextContentURLActionCreator)),
-      fpGet('data'),
+      compose(checkSearchError, fpGet('data')),
+      trace('Результат поиска артиста:'),
     ))
-    .then(compose(dispatch, setArtistContentActionCreator, fpGetOr([], 'data')))
-    .catch((e: Error) => console.warn('Ошибка поиска артиста:', e));
+    .catch(logAndThrowError);
 };
 
 export const setArtistContentByUrl = (direction: string): ThunkAction => (
@@ -70,11 +70,11 @@ export const setArtistContentByUrl = (direction: string): ThunkAction => (
   if (url) {
     return axios.get(url)
       .then(compose(
+        compose(dispatch, setArtistContentActionCreator, fpGetOr([], 'data')),
+        setNavURL(DIRECTIONS_ENUM.PREV, compose(dispatch, setArtistPrevContentURLActionCreator)),
         setNavURL(DIRECTIONS_ENUM.NEXT, compose(dispatch, setArtistNextContentURLActionCreator)),
         fpGet('data'),
       ))
-      .then(setNavURL(DIRECTIONS_ENUM.PREV, compose(dispatch, setArtistPrevContentURLActionCreator)))
-      .then(compose(dispatch, setArtistContentActionCreator, fpGetOr([], 'data')))
-      .catch((e: Error) => console.warn('Ошибка перехода по навигации:', e));
+      .catch(logAndThrowError);
   }
 };
