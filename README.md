@@ -1,3 +1,9 @@
+# React-app-with-fp
+
+This demo is intended for the presentation of functional programming approaches and in a react application.
+
+For full-fledged operation of the application in chrome on the local host, you need the [Allow CORS extension: Access-Control-Allow-Origin](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -36,6 +42,19 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+### `npm run lint`
+
+To start Eslint. ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+
+### `npm run lint:fix`
+
+To start Eslint in fix mode.
+
+### `npm run flow`
+
+To start Flow for types check.
+
 
 ## Learn More
 
