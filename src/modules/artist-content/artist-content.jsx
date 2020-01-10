@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Divider } from 'semantic-ui-react';
 import { ArtistContentsCardsList } from './artist-content__cards-list';
-import {ArtistContentControlRadioGroup} from './artist-content__control-radio-group';
+import { ArtistContentControlRadioGroup } from './artist-content__control-radio-group';
 
 type TProps = {
   contentCardsList: Array<TContentCard> | void,

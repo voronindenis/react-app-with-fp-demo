@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
-import { Card, Image } from 'semantic-ui-react'
-import styled from 'styled-components'
+import { Card, Image } from 'semantic-ui-react';
+import styled from 'styled-components';
 
 const Audio = styled.audio`
   width: 100%;

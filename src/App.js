@@ -12,7 +12,7 @@ function App() {
       <Container>
         <SearchString />
         <ArtistContent />
-        <NavButtons/>
+        <NavButtons />
       </Container>
     </Provider>
   );

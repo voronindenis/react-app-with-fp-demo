@@ -58,6 +58,12 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "flow-bin": "^0.115.0"
-  }
+    "flow-bin": "^0.115.0",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "lint",
+    "flow",
+    "test"
+  ]
 }
